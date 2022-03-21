@@ -17,14 +17,14 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'vote/results.html', {'question':question, })
 
-def vote(request, question_id):
+def votes(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
-        selecte_choice = question.serie_set.get(pk=request.POST['serie'])
+        selected_choice = question.serie_set.get(pk=request.POST['serie'])
     except (KeyError, Serie.DoesNotExist):
         return render(request, 'vote/detail.html', {'question':question, 'error_message': 'Vous devez choisir',})
     
     else:
-        selecte_choice.votes_serie += 1
-        selecte_choice.save()
+        selected_choice.votes_serie += 1
+        selected_choice.save()
         return HttpResponseRedirect(reverse('vote:results', args=(question_id,)))
