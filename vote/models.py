@@ -19,9 +19,11 @@ class Realisateur(models.Model):
 
 class Serie(models.Model):
     nom_serie = models.CharField(max_length=20)
-    description_serie = models.CharField(max_length=20)
-    image_serie = models.CharField(max_length=20)
+    description_serie = models.CharField(max_length=255)
+    # description_serie = models.TextField()
+    image_serie = models.CharField(max_length=255)
     votes_serie = models.IntegerField(default=0)
+    question = models.ManyToManyField(Question, blank=True)
     realisateur_serie = models.ForeignKey(Realisateur, on_delete=models.CASCADE)
 
     def __str__ (self):
