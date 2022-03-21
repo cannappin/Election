@@ -14,7 +14,10 @@
         {% if error_message  %}<p><strong>{{ error_message}}</strong></p>{% endif %}
         {% for serie in question.serie_set.all %} 
         <input type="radio" name="serie" id="serie{{ forloop.counter }}" value="{{ serie.id }}">
-        <label for="serie{{ forloop.counter }}">{{ serie.nom_serie}}<img src="{{serie.image_serie}}" width="200" height="100"> </label><br>
+        <label for="serie{{ forloop.counter }}">{{ serie.nom_serie}}</label><br>
+        <p>{{serie.genre}}</p>
+        <img src="{{serie.image_serie}}" width="200" height="100">
+        <p>{{serie.description_serie}}</p>
         
         {% endfor %} 
     </fieldset>    

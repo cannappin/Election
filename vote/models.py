@@ -18,8 +18,7 @@ class Realisateur(models.Model):
         return self.nom_realisateur
 
 class Genre(models.Model):
-    nom_genre = models.CharField(max_length=30)
-    question = models.ManyToManyField(Question, blank=True)
+    nom_genre = models.CharField(max_length=30)    
     definition_genre = models.CharField(max_length=255, blank = True , null=True)
 
     def __str__ (self):
@@ -46,8 +45,7 @@ class Plateform(models.Model):
 
 class Serie(models.Model):
     nom_serie = models.CharField(max_length=20)
-    description_serie = models.CharField(max_length=255)
-    # description_serie = models.TextField()
+    description_serie = models.TextField()    
     image_serie = models.CharField(max_length=255)
     votes_serie = models.IntegerField(default=0)
     genre = models.ManyToManyField(Genre, blank=True)
